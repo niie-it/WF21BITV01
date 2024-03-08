@@ -9,3 +9,7 @@
 
 
 ## Nhánh app: Lập trình C# Windows Form với CSDL SQL Server
+* Chuỗi kết nối:
+ ```cs
+ Server=.; Database=QLDA; Integrated Security=True;
+ ```
