@@ -59,5 +59,47 @@ namespace MyWordPad
 				}
 			}
 		}
+
+		private void selectFontToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			FontDialog fd = new FontDialog();
+			fd.ShowColor = true;//hiển thị nút chọn màu
+			fd.ShowApply = true;//hiển thị nút Apply
+
+			fd.Apply += new EventHandler(XuLyNutApplyFont);
+
+			if (fd.ShowDialog() == DialogResult.OK)
+			{
+				RtbDoc.SelectionFont = fd.Font;
+				RtbDoc.SelectionColor = fd.Color;
+			}
+		}
+
+		private void XuLyNutApplyFont(object sender, EventArgs e)
+		{
+			FontDialog fd = sender as FontDialog;
+			RtbDoc.SelectionFont = fd.Font;
+			RtbDoc.SelectionColor = fd.Color;
+		}
+
+		private void pageColorToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var cd = new ColorDialog();
+			if (cd.ShowDialog() == DialogResult.OK)
+			{
+				RtbDoc.BackColor = cd.Color;//thay đổi màu nền
+			}
+		}
+
+		private void printToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var pd = new PrintDialog();
+			pd.ShowDialog();
+		}
+
+		private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			RtbDoc.Undo();
+		}
 	}
 }
